@@ -1,0 +1,38 @@
+{
+"log": {
+  "loglevel": "warning",
+  "access": "/var/log/access.log",
+  "error": "/var/log/error.log"
+ },
+  "inbounds": [
+    {
+      "port": 1081,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "---id---",
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+        "path": "/ray"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    },{
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ]
+}
