@@ -11,6 +11,13 @@ resource "azurerm_container_group" "aci_caddy" {
   ip_address_type     = "public"
 
   container {
+    name    = "ql"
+    image   = "whyour/qinglong:latest"
+    cpu     = "0.5"
+    memory  = "0.5"
+  }
+
+  container {
     name   = "app"
     image  = "v2fly/v2fly-core:latest"
     cpu    = "0.5"
@@ -63,9 +70,4 @@ resource "azurerm_container_group" "aci_caddy" {
 output "url" {
   value = "https://${azurerm_container_group.aci_caddy.fqdn}"
   description = "URL"
-}
-
-output "v2ray_id" {
-  value = "${local.v2ray_id}"
-  description = "id"
 }

@@ -1,16 +1,24 @@
-
 $SITE_ADDRESS {
+	# Set this path to your site's directory.
+
 	log {
 		output file /var/log/caddy/caddy.log
 	}
-	# Set this path to your site's directory.
-	root * /usr/share/caddy
-    file_server
+
+	#handle /index* {
+	#    root * /usr/share/caddy
+	#    file_server {
+	#        index index.html
+	#    }
+	#}
 
 	tls kanchy@gmail.com
 	@websockets {
 		header Connection *Upgrade*
 		header Upgrade websocket
 	}
+
 	reverse_proxy @websockets localhost:1081
+
+	reverse_proxy localhost:5700
 }
