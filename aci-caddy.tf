@@ -20,7 +20,7 @@ locals {
   storage_account = "acicaddysa"
   storage_share = "acicaddy-share"
   container_group = "acicaddy_cg"
-  fqdn = "${local.dns_name}.${data.azurerm_resource_group.aci_caddy_data.location}.azurecontainer.io"
+  fqdn = "${local.dns_name}.eastasia.azurecontainer.io"
 }
 
 locals {
